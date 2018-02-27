@@ -21,7 +21,7 @@ oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea
 ```
 Otherwise:
 ```
-oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gogs/master/openshift/gitea-ephemeral-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
+oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea/master/openshift/gitea-ephemeral-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
 ```
 
 Note that hostname is required during Gitea installation in order to configure repository URLs correctly.
