@@ -20,8 +20,8 @@ COPY ./root /
 # Install Prerequisites
 RUN yum -y update && yum -y upgrade \
     && yum -y install git \
-    && yum -y clean all \
-    && mkdir -p ${APP_HOME}/data/gitea-repositories \
+    && yum -y clean all 
+RUN mkdir -p ${APP_HOME}/data/gitea-repositories \
     && mkdir -p ${APP_HOME}/data/lfs \
     && mkdir -p ${APP_HOME}/conf \
     && mkdir /.ssh \
