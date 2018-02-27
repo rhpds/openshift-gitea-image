@@ -1,0 +1,9 @@
+#!/bin/bash
+
+grep -v ^gitea /etc/passwd > "/tmp/passwd"
+echo "gitea:x:$(id -u):0:gitea user:/data:/sbin/nologin" >> /tmp/passwd
+cat /tmp/passwd >/etc/passwd
+rm /tmp/passwd
+
+# Finally start Gitea
+exec /home/gitea/gitea web --config=/home/gitea/conf/app.ini
