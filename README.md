@@ -7,7 +7,7 @@ Running containers on OpenShift comes with certain security and other requiremen
 * The run scripts used in the Docker image
 
 ## Prerequisites
-* An account in an OpenShift 3.4+ environment and a project
+* An account in an OpenShift 3.5+ environment and a project
 
 * Gitea requires a database to store its information. Provisioning a database is out-of-scope for this repository. If you wish to run the database on OpenShift, it is suggested that you deploy PostgreSQL using persistent storage. More information on the OpenShift PostgreSQL deployment is here:
 
