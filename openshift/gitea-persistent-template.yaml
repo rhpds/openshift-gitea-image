@@ -298,6 +298,12 @@ objects:
       MODE      = file
       LEVEL     = Info
       ROOT_PATH = /home/gitea/log
+
+      [markup.asciidoc]
+      ENABLED = true
+      FILE_EXTENSIONS = .adoc,.asciidoc
+      RENDER_COMMAND = "asciidoc --out-file=- -"
+      IS_INPUT_FILE = false
 parameters:
 - description: The name for the application.
   name: APPLICATION_NAME
