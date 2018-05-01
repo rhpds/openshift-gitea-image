@@ -180,7 +180,7 @@ objects:
                 path: /
                 port: 3000
                 scheme: HTTP
-              initialDelaySeconds: 3
+              initialDelaySeconds: 5
               timeoutSeconds: 1
               periodSeconds: 20
               successThreshold: 1
@@ -190,7 +190,7 @@ objects:
                 path: /
                 port: 3000
                 scheme: HTTP
-              initialDelaySeconds: 3
+              initialDelaySeconds: 30
               timeoutSeconds: 1
               periodSeconds: 10
               successThreshold: 1
@@ -262,8 +262,10 @@ objects:
       SSH_DOMAIN       = ${HOSTNAME}
       DOMAIN           = ${HOSTNAME}
       HTTP_PORT        = 3000
+      SSH_PORT         = 2022
       ROOT_URL         = http://${HOSTNAME}
-      DISABLE_SSH      = true
+      DISABLE_SSH      = false
+      START_SSH_SERVER = true
       LFS_START_SERVER = false
       OFFLINE_MODE     = false
 

@@ -11,7 +11,7 @@ LABEL name="Gitea - Git Service" \
       io.k8s.display-name="Gitea - Git Service" \
       io.openshift.expose-services="3000,gitea" \
       io.openshift.tags="gitea" \
-      build-date="2018-04-06" \
+      build-date="2018-05-01" \
       version=$GITEA_VERSION \
       release="1" \
       maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
@@ -20,11 +20,12 @@ COPY ./root /
 
 # Update latest packages and install Prerequisites
 RUN yum -y update && yum -y upgrade \
-    && yum -y install git asciidoc \
+    && yum -y install git asciidoc ca-certificates \
+              gettext openssh s6 su-exec tzdata \
     && yum -y clean all \
     && rm -rf /var/cache/yum
 
-RUN adduser gitea -d/home/gitea \
+RUN adduser gitea --home-dir=/home/gitea \
     && mkdir ${REPO_HOME} \
     && chmod 775 ${REPO_HOME} \
     && chgrp 0 ${REPO_HOME} \
@@ -40,7 +41,7 @@ RUN adduser gitea -d/home/gitea \
 
 WORKDIR ${APP_HOME}
 VOLUME ${REPO_HOME}
-EXPOSE 3000
+EXPOSE 22 3000
 USER 1001
 
 ENTRYPOINT ["/usr/bin/rungitea"]
