@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.6.0
+VERSION=1.6.2
 docker build . -t docker.io/wkulhanek/gitea:${VERSION}
 docker tag docker.io/wkulhanek/gitea:${VERSION} docker.io/wkulhanek/gitea:latest
 docker push docker.io/wkulhanek/gitea:${VERSION}
