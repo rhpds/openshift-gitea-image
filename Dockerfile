@@ -2,7 +2,7 @@ FROM docker.io/centos:7
 
 # Set the Gitea Version to install.
 # Check https://dl.gitea.io/gitea/ for available versions.
-ENV GITEA_VERSION="1.7.4"
+ENV GITEA_VERSION="1.7.5"
 ENV APP_HOME=/home/gitea
 ENV REPO_HOME=/gitea-repositories
 
@@ -11,7 +11,7 @@ LABEL name="Gitea - Git Service" \
       io.k8s.display-name="Gitea - Git Service" \
       io.openshift.expose-services="3000,gitea" \
       io.openshift.tags="gitea" \
-      build-date="2019-03-15" \
+      build-date="2019-04-02" \
       version=$GITEA_VERSION \
       release="1" \
       maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
