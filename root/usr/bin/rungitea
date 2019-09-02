@@ -12,5 +12,9 @@ export USER=gitea
 export USERNAME=gitea
 export HOME=/home/gitea
 
+# app.ini will be read only config map and latest gitea wants to write a JWT token into it so copy it to new writable location. 
+mkdir -p /home/gitea/writable-config
+cp /home/gitea/conf/app.ini /home/gitea/writable-config/app.ini
+
 # Start Gitea's Web Interface
-exec /home/gitea/gitea web --config=/home/gitea/conf/app.ini
+exec /home/gitea/gitea web --config=/home/gitea/writable-config/app.ini
