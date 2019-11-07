@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Updated /etc/passwd with current UID of the running container
 grep -v ^gitea /etc/passwd > "/tmp/passwd"
