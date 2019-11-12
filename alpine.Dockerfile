@@ -24,14 +24,22 @@ ADD https://dl.gitea.io/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd6
 RUN ls -ltr ${APP_HOME}/gitea
 
 RUN apk add --no-cache \
-    git asciidoc ca-certificates \
-    gettext openssh s6 su-exec tzdata
+    git \
+    asciidoc \
+    ca-certificates \
+    gettext \
+    openssh \
+    s6 \
+    su-exec \
+    tzdata \
+    bash
 
 USER root
 
 RUN addgroup -S gitea &&\
-    adduser -s /bin/bash -S -G gitea gitea -h /home/gitea &&\
-# RUN adduser -r gitea -h /home/gitea &&\
+    adduser -s /bin/bash \
+    -S -G gitea gitea \
+    -h /home/gitea &&\
     mkdir ${REPO_HOME} &&\
     chmod 775 ${REPO_HOME} &&\
     chgrp 0 ${REPO_HOME} &&\
