@@ -2,8 +2,9 @@ version: '3.7'
 services:
   gitea:
     image: gitea_local:latest
+    container_name: gitea_openshift
     volumes:
-      - /tmp/gitea/data:/data
+      - /tmp/gitea/repos:/gitea-repositories
     ports:
       - "3000:3000"
       - "22:22"
@@ -11,12 +12,15 @@ services:
       - db
     restart: always
   db:
-    image: mariadb:10
+    image: postgres:9.5
     restart: always
+    container_name: gitea_pg
     environment:
-      - MYSQL_ROOT_PASSWORD=gitea
-      - MYSQL_DATABASE=gitea
-      - MYSQL_USER=gitea
-      - MYSQL_PASSWORD=gitea
+      - POSTGRES_USER=gitea
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_DB=gitea
+      # - POSTGRESQL_ADMIN_PASSWORD=gitea
     volumes:
-      - /tmp/gitea/db/:/var/lib/mysql
+      - /tmp/gitea/db/:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"

@@ -13,7 +13,7 @@ LABEL name="Gitea - Git Service" \
       io.k8s.display-name="Gitea - Git Service" \
       io.openshift.expose-services="3000,gitea" \
       io.openshift.tags="gitea" \
-      build-date="2019-10-31" \
+      build-date="2019-11-12" \
       version=$GITEA_VERSION \
       release="1" \
       maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
@@ -21,7 +21,6 @@ LABEL name="Gitea - Git Service" \
 COPY ./root /
 
 ADD https://dl.gitea.io/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64 ${APP_HOME}/gitea
-RUN ls -ltr ${APP_HOME}/gitea
 
 RUN apk add --no-cache \
     git \
