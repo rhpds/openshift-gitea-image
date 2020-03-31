@@ -25,3 +25,6 @@ oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea
 ```
 
 Note that hostname is required during Gitea installation in order to configure repository URLs correctly.
+
+# Operator Deployment
+A Gitea Operator can be found at https://github.com/wkulhanek/gitea-operator. Operators are the preferred way to deploy applications on Kubernetes.
