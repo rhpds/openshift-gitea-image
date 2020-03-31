@@ -13,4 +13,4 @@ export USERNAME=gitea
 export HOME=/home/gitea
 
 # Start Gitea's Web Interface
-exec /home/gitea/gitea web --config=/home/gitea/conf/app.ini
+exec /home/gitea/gitea --config=/home/gitea/conf/app.ini web
