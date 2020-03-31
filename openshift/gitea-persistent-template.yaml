@@ -363,7 +363,7 @@ parameters:
 - name: GITEA_IMAGE
   displayName: Gogs Image
   description: The name and tag for the Gitea Image to use
-  value: "docker.io/wkulhanek/gitea"
+  value: "quay.io/gpte-devops-automation/gitea"
   required: true
 - name: GITEA_VERSION
   displayName: Gogs Image Version Tag
