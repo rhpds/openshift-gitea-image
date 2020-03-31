@@ -247,6 +247,10 @@ objects:
       INTERNAL_TOKEN = ${GITEA_INTERNAL_TOKEN}
       INSTALL_LOCK   = true
       SECRET_KEY     = ${GITEA_SECRET_KEY}
+      PASSWORD_COMPLEXITY = off
+
+      [oauth2]
+      ENABLE = false
 
       [database]
       DB_TYPE  = postgres
@@ -255,17 +259,16 @@ objects:
       USER     = ${DATABASE_USER}
       PASSWD   = ${DATABASE_PASSWORD}
       SSL_MODE = disable
-      PATH     = data/gitea.db
 
       [repository]
       ROOT = /gitea-repositories
 
       [server]
+      ROOT_URL         = http://${HOSTNAME}
       SSH_DOMAIN       = ${HOSTNAME}
       DOMAIN           = ${HOSTNAME}
       HTTP_PORT        = 3000
       SSH_PORT         = 2022
-      ROOT_URL         = http://${HOSTNAME}
       DISABLE_SSH      = false
       START_SSH_SERVER = true
       LFS_START_SERVER = false
