@@ -1,4 +1,5 @@
-FROM docker.io/centos:7
+# Use Red Hat Universal Base Image 8 - Minimal
+FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 # Set the Gitea Version to install.
 # Check https://dl.gitea.io/gitea/ for available versions.
@@ -11,7 +12,7 @@ LABEL name="Gitea - Git Service" \
       io.k8s.display-name="Gitea - Git Service" \
       io.openshift.expose-services="3000,gitea" \
       io.openshift.tags="gitea" \
-      build-date="2020-04-02" \
+      build-date="2020-04-11" \
       version=$GITEA_VERSION \
       release="1" \
       maintainer="Wolfgang Kulhanek <WolfgangKulhanek@gmail.com>"
@@ -19,10 +20,9 @@ LABEL name="Gitea - Git Service" \
 COPY ./root /
 
 # Update latest packages and install Prerequisites
-RUN yum -y update && yum -y upgrade \
-    && yum -y install git asciidoc ca-certificates \
-              gettext openssh s6 su-exec tzdata \
-    && yum -y clean all \
+RUN microdnf -y update \
+    && microdnf -y install git ca-certificates openssh gettext openssh tzdata \
+    && microdnf -y clean all \
     && rm -rf /var/cache/yum
 
 RUN adduser gitea --home-dir=/home/gitea \
