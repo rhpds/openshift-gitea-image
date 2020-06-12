@@ -94,7 +94,7 @@ objects:
         - postgresql
         from:
           kind: ImageStreamTag
-          name: postgresql:9.5
+          name: postgresql:9.6
           namespace: openshift
       type: ImageChange
     - type: ConfigChange
@@ -133,6 +133,8 @@ objects:
     host: ${HOSTNAME}
     to:
       name: ${APPLICATION_NAME}
+    tls:
+      termination: edge
 - kind: DeploymentConfig
   apiVersion: v1
   metadata:
@@ -262,7 +264,7 @@ objects:
       ROOT = /gitea-repositories
 
       [server]
-      ROOT_URL         = http://${HOSTNAME}
+      ROOT_URL         = https://${HOSTNAME}
       SSH_DOMAIN       = ${HOSTNAME}
       DOMAIN           = ${HOSTNAME}
       HTTP_PORT        = 3000
