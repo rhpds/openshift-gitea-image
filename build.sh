@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=1.11.5
+VERSION=1.11.7
 docker build . -t quay.io/gpte-devops-automation/gitea:${VERSION}
 docker tag quay.io/gpte-devops-automation/gitea:${VERSION} quay.io/gpte-devops-automation/gitea:latest
 docker push quay.io/gpte-devops-automation/gitea:${VERSION}
