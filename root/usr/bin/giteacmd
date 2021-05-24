@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Updated /etc/passwd with current UID of the running container
+grep -v ^gitea /etc/passwd > "/tmp/passwd"
+echo "gitea:x:$(id -u):0:gitea user:/data:/sbin/nologin" >> /tmp/passwd
+cat /tmp/passwd >/etc/passwd
+rm /tmp/passwd
+
+# Set a few environment variables to make Gitea behave
+export GITEA_WORK_DIR=/home/gitea
+export USER=gitea
+export USERNAME=gitea
+export HOME=/home/gitea
+
+# Run gitea command
+exec /home/gitea/gitea --config=/home/gitea/conf/app.ini "$@"
