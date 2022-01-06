@@ -14,7 +14,11 @@ Running containers on OpenShift comes with certain security and other requiremen
   https://docs.openshift.org/latest/using_images/db_images/postgresql.html
 
 ## Deployment
-Gitea can be easily deployed using the included templates in `openshift` folder. If your have persistent volumes available in your cluster:
+Gitea can be easily deployed using the included templates in `openshift` folder. 
+
+Note that the template deploys PostgreSQL 12. If you are on an older OpenShift cluster that doesn't have that ImageStream available yet then modify the template first to use a PostgreSQL version that your clusters supports (9.6 or 10) in the ImageStream object.
+
+If your have persistent volumes available in your cluster:
 
 ```
 oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea/master/openshift/gitea-persistent-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
