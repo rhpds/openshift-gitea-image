@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal:latest
 
 # Set the Gitea Version to install.
 # Check https://dl.gitea.io/gitea/ for available versions.
-ENV GITEA_VERSION="1.15.11"
+ENV GITEA_VERSION="1.16.0"
 ENV APP_HOME=/home/gitea
 ENV REPO_HOME=/gitea-repositories
 
