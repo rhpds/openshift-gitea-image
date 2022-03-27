@@ -2,9 +2,9 @@
 MAJOR_VERSION=1.16
 MINOR_VERSION=5
 
-podman build . -t quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
-podman tag quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION} quay.io/gpte-devops-automation/gitea:latest
-podman tag quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION} quay.io/gpte-devops-automation/gitea:latest
+podman build . -t quay.io/gpte-devops-automation/gitea:latest
+podman tag quay.io/gpte-devops-automation/gitea:latest quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
+podman tag quay.io/gpte-devops-automation/gitea:latest quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}
 podman push quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
 podman push quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}
 podman push quay.io/gpte-devops-automation/gitea:latest
