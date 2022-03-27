@@ -1,8 +1,12 @@
 #!/bin/bash
-VERSION=1.16.4
-podman build . -t quay.io/gpte-devops-automation/gitea:${VERSION}
-podman tag quay.io/gpte-devops-automation/gitea:${VERSION} quay.io/gpte-devops-automation/gitea:latest
-podman push quay.io/gpte-devops-automation/gitea:${VERSION}
+MAJOR_VERSION=1.16
+MINOR_VERSION=5
+
+podman build . -t quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
+podman tag quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION} quay.io/gpte-devops-automation/gitea:latest
+podman tag quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION} quay.io/gpte-devops-automation/gitea:latest
+podman push quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
+podman push quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}
 podman push quay.io/gpte-devops-automation/gitea:latest
-git tag ${VERSION}
-git push origin ${VERSION}
+git tag ${MAJOR_VERSION}.${MINOR_VERSION}
+git push origin ${MAJOR_VERSION}.${MINOR_VERSION}
