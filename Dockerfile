@@ -10,7 +10,7 @@ ENV REPO_HOME=/gitea-repositories
 LABEL name="Gitea - Git Service" \
       vendor="Gitea" \
       io.k8s.display-name="Gitea - Git Service" \
-      io.openshift.expose-services="3000,gitea" \
+      io.openshift.expose-services="3000/tcp:gitea,2022/tcp:ssh" \
       io.openshift.tags="gitea" \
       build-date="2022-10-17" \
       version=$GITEA_VERSION \
@@ -41,7 +41,7 @@ RUN adduser gitea --home-dir=/home/gitea \
 
 WORKDIR ${APP_HOME}
 VOLUME ${REPO_HOME}
-EXPOSE 22 3000
+EXPOSE 22 2022 3000
 USER 1001
 
 ENTRYPOINT ["/usr/bin/rungitea"]
