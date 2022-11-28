@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Set a few environment variables to make Gitea behave
+export GITEA_WORK_DIR=/home/gitea
+export USER=gitea
+export USERNAME=gitea
+export HOME=/home/gitea
+
+# Run gitea command
+exec /home/gitea/gitea --config=/home/gitea/conf/app.ini "$@"
