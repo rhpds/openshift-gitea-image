@@ -1,6 +1,6 @@
 #!/bin/bash
-MAJOR_VERSION=1.19
-MINOR_VERSION=4
+MAJOR_VERSION=1.20
+MINOR_VERSION=0
 
 podman build . -t quay.io/gpte-devops-automation/gitea:latest
 podman tag quay.io/gpte-devops-automation/gitea:latest quay.io/gpte-devops-automation/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
