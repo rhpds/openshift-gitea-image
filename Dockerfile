@@ -21,7 +21,7 @@ COPY ./root /
 
 # Update latest packages and install Prerequisites
 RUN microdnf -y update \
-    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 \
+    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 asciidoc \
     && microdnf -y clean all \
     && rm -rf /var/cache/yum
 
