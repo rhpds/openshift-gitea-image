@@ -363,12 +363,12 @@ parameters:
   from: '[a-zA-Z0-9]{10}'
   generate: expression
 - name: GITEA_IMAGE
-  displayName: Gogs Image
+  displayName: Gitea Image
   description: The name and tag for the Gitea Image to use
-  value: "quay.io/gpte-devops-automation/gitea"
+  value: "quay.io/rhpds/gitea"
   required: true
 - name: GITEA_VERSION
-  displayName: Gogs Image Version Tag
-  description: The tag for the Gogs Image to use
+  displayName: Gitea Image Version Tag
+  description: The tag for the Gitea Image to use
   value: "latest"
   required: true

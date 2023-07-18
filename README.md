@@ -8,17 +8,17 @@ Running containers on OpenShift comes with certain security and other requiremen
 * The run scripts used in the Docker image
 
 ## Prerequisites
-* An account in an OpenShift 3.5+ environment and a project
+* An account in an OpenShift 4.10+ environment and a project
 
 * Gitea requires a database to store its information. Provisioning a database is out-of-scope for this repository. If you wish to run the database on OpenShift, it is suggested that you deploy PostgreSQL using persistent storage. More information on the OpenShift PostgreSQL deployment is here:
 
   https://docs.openshift.org/latest/using_images/db_images/postgresql.html
 
 # Deployment via Operator
-A Gitea Operator can be found at https://github.com/redhat-gpte-devopsautomation/gitea-operator. Operators are the preferred way to deploy applications on Kubernetes.
+A Gitea Operator can be found at https://github.com/rhpds/gitea-operator. Operators are the preferred way to deploy applications on Kubernetes.
 
 # Deployment via Helm Chart
-A Helm Chart has been created at https://github.com/redhat-cop/helm-charts/charts/gitea.
+A Helm Chart has been created at [https://github.com/redhat-cop/helm-charts/charts/gitea](https://github.com/redhat-cop/helm-charts/tree/master/charts/gitea).
 
 Note that hostname is required during Gitea Helm chart installation in order to configure repository URLs correctly.
 
@@ -30,11 +30,11 @@ Note that the template deploys PostgreSQL 12. If you are on an older OpenShift c
 If your have persistent volumes available in your cluster:
 
 ```
-oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea/master/openshift/gitea-persistent-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
+oc new-app -f https://raw.githubusercontent.com/rhpds/openshift-gitea-image/main/openshift/gitea-persistent-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
 ```
 Otherwise:
 ```
-oc new-app -f https://raw.githubusercontent.com/wkulhanek/docker-openshift-gitea/master/openshift/gitea-ephemeral-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
+oc new-app -f https://raw.githubusercontent.com/rhpds/openshift-gitea-image/main/openshift/gitea-ephemeral-template.yaml --param=HOSTNAME=gitea-demo.yourdomain.com
 ```
 
 Note that hostname is required during Gitea template deployment in order to configure repository URLs correctly.
