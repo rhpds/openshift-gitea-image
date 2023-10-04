@@ -1,6 +1,6 @@
 #!/bin/bash
 MAJOR_VERSION=1.20
-MINOR_VERSION=4
+MINOR_VERSION=5
 
 podman build . -t quay.io/rhpds/gitea:latest
 podman tag quay.io/rhpds/gitea:latest quay.io/rhpds/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
