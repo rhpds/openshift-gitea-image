@@ -3,7 +3,9 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 # Set the Gitea Version to install.
 # Check https://dl.gitea.io/gitea/ for available versions.
-ENV GITEA_VERSION="1.20.5"
+ARG GITEA_VERSION="1.20.0"
+ARG BUILD_DATE="2023-10-01"
+
 ENV APP_HOME=/home/gitea
 ENV REPO_HOME=/gitea-repositories
 
@@ -12,7 +14,7 @@ LABEL name="Gitea - Git Service" \
       io.k8s.display-name="Gitea - Git Service" \
       io.openshift.expose-services="3000/tcp:gitea,2022/tcp:ssh" \
       io.openshift.tags="gitea" \
-      build-date="2023-10-04" \
+      build-date=$BUILD_DATE \
       version=$GITEA_VERSION \
       release="1" \
       maintainer="Wolfgang Kulhanek <wolfgang@famkulhanek.com>"
@@ -41,7 +43,7 @@ RUN adduser gitea --home-dir=/home/gitea \
 
 WORKDIR ${APP_HOME}
 VOLUME ${REPO_HOME}
-EXPOSE 22 2022 3000
+EXPOSE 2022 3000
 USER 1001
 
 ENTRYPOINT ["/usr/bin/rungitea"]
