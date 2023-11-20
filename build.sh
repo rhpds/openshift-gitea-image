@@ -7,7 +7,7 @@ BUILD_DATE=$(date +"%Y-%m-%d")
 
 podman build . \
   --build-arg GITEA_VERSION=${GITEA_VERSION} \
-  --build-arg BUILD_DATE=${BUILD_DATE}
+  --build-arg BUILD_DATE=${BUILD_DATE} \
   --tag quay.io/rhpds/gitea:latest
 
 podman tag quay.io/rhpds/gitea:latest quay.io/rhpds/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
