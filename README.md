@@ -39,3 +39,4 @@ oc new-app -f https://raw.githubusercontent.com/rhpds/openshift-gitea-image/main
 
 Note that hostname is required during Gitea template deployment in order to configure repository URLs correctly.
 
+Added automatic build
