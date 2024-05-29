@@ -23,9 +23,10 @@ COPY ./root /
 
 # Update latest packages and install Prerequisites
 RUN microdnf -y update \
-    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 asciidoc source-highlight \
+    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 source-highlight \
     && microdnf -y clean all \
     && rm -rf /var/cache/yum
+#    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 asciidoc source-highlight \
 
 RUN adduser gitea --home-dir=/home/gitea \
     && mkdir ${REPO_HOME} \
