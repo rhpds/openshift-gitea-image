@@ -7,7 +7,9 @@ ARG GITEA_VERSION="1.20.0"
 ARG BUILD_DATE="2023-10-01"
 
 ENV APP_HOME=/home/gitea
-ENV REPO_HOME=/gitea-repositories
+ENV DATA_HOME=/gitea-data
+ENV REPO_HOME=/gitea-data/repositories
+ENV PACKAGES_HOME=/gitea-data/packages
 
 LABEL name="Gitea - Git Service" \
       vendor="Gitea" \
@@ -29,9 +31,12 @@ RUN microdnf -y update \
 #    && microdnf -y install git ca-certificates openssh gettext openssh tzdata tar gzip bzip2 asciidoc source-highlight \
 
 RUN adduser gitea --home-dir=/home/gitea \
-    && mkdir ${REPO_HOME} \
+    && mkdir -p ${REPO_HOME} \
     && chmod 775 ${REPO_HOME} \
     && chgrp 0 ${REPO_HOME} \
+    && mkdir -p ${PACKAGES_HOME} \
+    && chmod 775 ${PACKAGES_HOME} \
+    && chgrp 0 ${PACKAGES_HOME} \
     && mkdir -p ${APP_HOME}/data/lfs \
     && mkdir -p ${APP_HOME}/conf \
     && mkdir /.ssh \
@@ -43,7 +48,7 @@ RUN adduser gitea --home-dir=/home/gitea \
     && chmod -R g=u ${APP_HOME} /etc/passwd
 
 WORKDIR ${APP_HOME}
-VOLUME ${REPO_HOME}
+VOLUME ${DATA_HOME}
 EXPOSE 2022 3000
 USER 1001
 
