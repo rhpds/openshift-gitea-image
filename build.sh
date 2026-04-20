@@ -5,7 +5,7 @@ MINOR_VERSION=0
 GITEA_VERSION="${MAJOR_VERSION}.${MINOR_VERSION}"
 BUILD_DATE=$(date +"%Y-%m-%d")
 
-podman pull registry.access.redhat.com/ubi9/ubi-minimal:latest
+podman pull registry.access.redhat.com/ubi10/ubi-minimal:latest
 
 podman build . \
   --build-arg GITEA_VERSION=${GITEA_VERSION} \
