@@ -99,8 +99,8 @@ jobs:
           echo "
           # command to verify with cosign
           cosign verify \\
-            --certificate-identity=https://github.com/${{ github.repository }}/.github/workflows/build-sign.yml@${{ github.ref }} \\
+            --certificate-identity=https://github.com/${{ github.repository }}/.github/workflows/docker-publish.yml@${{ github.ref }} \\
             --certificate-oidc-issuer=https://token.actions.githubusercontent.com \\
-            ghcr.io/${{ github.repository }}@${{ steps.build.outputs.digest }}
+            ghcr.io/${{ github.repository }}:${{ github.ref }}
           "
           
