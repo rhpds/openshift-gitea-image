@@ -49,7 +49,7 @@ Configure these GitHub Actions repository secrets under **Settings > Secrets and
 variables > Actions**:
 
 * `QUAY_USERNAME`: a Quay robot account username, such as `rhpds+gitea_builder`.
-* `QUAY_PASSWORD`: that robot account's token. The account needs write permission
+* `QUAY_ROBOT_TOKEN`: that robot account's token. The account needs write permission
   on the `rhpds/gitea` Quay repository.
 
 After committing and pushing the workflow changes to `main`, tag the commit to
