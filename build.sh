@@ -1,6 +1,6 @@
 #!/bin/bash
-MAJOR_VERSION=1.27
-MINOR_VERSION=3
+MAJOR_VERSION=28.0
+MINOR_VERSION=0
 
 GITEA_VERSION="${MAJOR_VERSION}.${MINOR_VERSION}"
 BUILD_DATE=$(date +"%Y-%m-%d")
@@ -18,5 +18,3 @@ podman tag quay.io/rhpds/gitea:latest quay.io/rhpds/gitea:${MAJOR_VERSION}
 podman push quay.io/rhpds/gitea:${MAJOR_VERSION}.${MINOR_VERSION}
 podman push quay.io/rhpds/gitea:${MAJOR_VERSION}
 podman push quay.io/rhpds/gitea:latest
-# git tag ${MAJOR_VERSION}.${MINOR_VERSION}
-# git push origin ${MAJOR_VERSION}.${MINOR_VERSION}
