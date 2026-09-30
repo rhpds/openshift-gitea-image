@@ -3,7 +3,7 @@ Gitea is a Git service. Learn more about it at https://gitea.io.
 
 Running containers on OpenShift comes with certain security and other requirements. This repository contains:
 
-* A Dockerfile for building an OpenShift-compatible Gitea image
+* A Containerfile for building an OpenShift-compatible Gitea image
 * A shell script to build the image using podman
 * The run scripts used in the Docker image
 
@@ -39,4 +39,34 @@ oc new-app -f https://raw.githubusercontent.com/rhpds/openshift-gitea-image/main
 
 Note that hostname is required during Gitea template deployment in order to configure repository URLs correctly.
 
-Added automatic build
+## Publishing an image to Quay
+
+The GitHub Actions workflow builds and publishes `quay.io/rhpds/gitea` when a
+version tag is pushed. The tag selects both the Gitea binary version and the image
+version; there is no need to update `build.sh` for an automated release.
+
+Configure these GitHub Actions repository secrets under **Settings > Secrets and
+variables > Actions**:
+
+* `QUAY_USERNAME`: a Quay robot account username, such as `rhpds+gitea_builder`.
+* `QUAY_PASSWORD`: that robot account's token. The account needs write permission
+  on the `rhpds/gitea` Quay repository.
+
+After committing and pushing the workflow changes to `main`, tag the commit to
+release and push the tag:
+
+```sh
+git tag 28.0.0
+git push origin 28.0.0
+```
+
+This builds Gitea `28.0.0` and publishes `quay.io/rhpds/gitea:28.0.0`,
+`quay.io/rhpds/gitea:28.0`, and `quay.io/rhpds/gitea:latest`, matching the tags used
+by the local build script. Each release updates `latest`, including releases of
+older versions. Tags with a `v` prefix, such as `v28.0.0`, are also supported and
+produce the same image tags. Only stable `X.Y.Z` versions are supported, and the
+matching Gitea Linux amd64 binary must be available from the Gitea download site.
+
+Pushes to `main` and pull requests build without publishing, using the default
+`GITEA_VERSION` in `Containerfile`. Published images are signed with cosign using
+the workflow's GitHub Actions identity.

@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi9/ubi-minimal:latest
 
 # Set the Gitea Version to install.
 # Check https://dl.gitea.io/gitea/ for available versions.
-ARG GITEA_VERSION="1.20.0"
+ARG GITEA_VERSION="28.0.0"
 ARG BUILD_DATE="2023-10-01"
 
 ENV APP_HOME=/home/gitea
@@ -40,7 +40,7 @@ RUN adduser gitea --home-dir=/home/gitea \
     && mkdir -p ${APP_HOME}/data/lfs \
     && mkdir -p ${APP_HOME}/conf \
     && mkdir /.ssh \
-    && curl -L -o ${APP_HOME}/gitea https://dl.gitea.io/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64 \
+    && curl --fail --location -o ${APP_HOME}/gitea https://dl.gitea.io/gitea/${GITEA_VERSION}/gitea-${GITEA_VERSION}-linux-amd64 \
     && chmod 775 ${APP_HOME}/gitea \
     && chown gitea:root ${APP_HOME}/gitea \
     && chgrp -R 0 ${APP_HOME} \
